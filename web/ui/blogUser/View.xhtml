@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewBlogUserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewBlogUserLabel_id}"/>
+                    <h:outputText value="#{blogUserController.selected.id}" title="#{bundle.ViewBlogUserTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewBlogUserLabel_sessionUniqueUserID}"/>
+                    <h:outputText value="#{blogUserController.selected.sessionUniqueUserID}" title="#{bundle.ViewBlogUserTitle_sessionUniqueUserID}"/>
+                    <h:outputText value="#{bundle.ViewBlogUserLabel_firstname}"/>
+                    <h:outputText value="#{blogUserController.selected.firstname}" title="#{bundle.ViewBlogUserTitle_firstname}"/>
+                    <h:outputText value="#{bundle.ViewBlogUserLabel_lastname}"/>
+                    <h:outputText value="#{blogUserController.selected.lastname}" title="#{bundle.ViewBlogUserTitle_lastname}"/>
+                    <h:outputText value="#{bundle.ViewBlogUserLabel_about}"/>
+                    <h:outputText value="#{blogUserController.selected.about}" title="#{bundle.ViewBlogUserTitle_about}"/>
+                    <h:outputText value="#{bundle.ViewBlogUserLabel_photo}"/>
+                    <h:outputText value="#{blogUserController.selected.photo}" title="#{bundle.ViewBlogUserTitle_photo}"/>
+                    <h:outputText value="#{bundle.ViewBlogUserLabel_username}"/>
+                    <h:outputText value="#{blogUserController.selected.username}" title="#{bundle.ViewBlogUserTitle_username}"/>
+                    <h:outputText value="#{bundle.ViewBlogUserLabel_password}"/>
+                    <h:outputText value="#{blogUserController.selected.password}" title="#{bundle.ViewBlogUserTitle_password}"/>
+                    <h:outputText value="#{bundle.ViewBlogUserLabel_email}"/>
+                    <h:outputText value="#{blogUserController.selected.email}" title="#{bundle.ViewBlogUserTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewBlogUserLabel_last_connected}"/>
+                    <h:outputText value="#{blogUserController.selected.last_connected}" title="#{bundle.ViewBlogUserTitle_last_connected}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewBlogUserLabel_userStatus}"/>
+                    <h:outputText value="#{blogUserController.selected.userStatus}" title="#{bundle.ViewBlogUserTitle_userStatus}"/>
+                    <h:outputText value="#{bundle.ViewBlogUserLabel_role}"/>
+                    <h:outputText value="#{blogUserController.selected.role}" title="#{bundle.ViewBlogUserTitle_role}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{blogUserController.destroyAndView}" value="#{bundle.ViewBlogUserDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewBlogUserEditLink}"/>
+                <br />
+                <h:commandLink action="#{blogUserController.prepareCreate}" value="#{bundle.ViewBlogUserCreateLink}" />
+                <br />
+                <h:commandLink action="#{blogUserController.prepareList}" value="#{bundle.ViewBlogUserShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewBlogUserIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

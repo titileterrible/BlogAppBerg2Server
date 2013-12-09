@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCommentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCommentLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{commentController.selected.id}" title="#{bundle.CreateCommentTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateCommentLabel_comment_title}" for="comment_title" />
+                    <h:inputText id="comment_title" value="#{commentController.selected.comment_title}" title="#{bundle.CreateCommentTitle_comment_title}" />
+                    <h:outputLabel value="#{bundle.CreateCommentLabel_comment_body}" for="comment_body" />
+                    <h:inputTextarea rows="4" cols="30" id="comment_body" value="#{commentController.selected.comment_body}" title="#{bundle.CreateCommentTitle_comment_body}" required="true" requiredMessage="#{bundle.CreateCommentRequiredMessage_comment_body}"/>
+                    <h:outputLabel value="#{bundle.CreateCommentLabel_comment_date}" for="comment_date" />
+                    <h:inputText id="comment_date" value="#{commentController.selected.comment_date}" title="#{bundle.CreateCommentTitle_comment_date}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateCommentLabel_blogUser}" for="blogUser" />
+                    <h:selectOneMenu id="blogUser" value="#{commentController.selected.blogUser}" title="#{bundle.CreateCommentTitle_blogUser}" >
+                        <f:selectItems value="#{blogUserController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCommentLabel_article}" for="article" />
+                    <h:selectOneMenu id="article" value="#{commentController.selected.article}" title="#{bundle.CreateCommentTitle_article}" >
+                        <f:selectItems value="#{articleController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{commentController.create}" value="#{bundle.CreateCommentSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{commentController.prepareList}" value="#{bundle.CreateCommentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCommentIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

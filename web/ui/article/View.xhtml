@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewArticleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewArticleLabel_id}"/>
+                    <h:outputText value="#{articleController.selected.id}" title="#{bundle.ViewArticleTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewArticleLabel_title}"/>
+                    <h:outputText value="#{articleController.selected.title}" title="#{bundle.ViewArticleTitle_title}"/>
+                    <h:outputText value="#{bundle.ViewArticleLabel_keywords}"/>
+                    <h:outputText value="#{articleController.selected.keywords}" title="#{bundle.ViewArticleTitle_keywords}"/>
+                    <h:outputText value="#{bundle.ViewArticleLabel_published_on}"/>
+                    <h:outputText value="#{articleController.selected.published_on}" title="#{bundle.ViewArticleTitle_published_on}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewArticleLabel_content}"/>
+                    <h:outputText value="#{articleController.selected.content}" title="#{bundle.ViewArticleTitle_content}"/>
+                    <h:outputText value="#{bundle.ViewArticleLabel_photo}"/>
+                    <h:outputText value="#{articleController.selected.photo}" title="#{bundle.ViewArticleTitle_photo}"/>
+                    <h:outputText value="#{bundle.ViewArticleLabel_position_longitude}"/>
+                    <h:outputText value="#{articleController.selected.position_longitude}" title="#{bundle.ViewArticleTitle_position_longitude}"/>
+                    <h:outputText value="#{bundle.ViewArticleLabel_position_latitude}"/>
+                    <h:outputText value="#{articleController.selected.position_latitude}" title="#{bundle.ViewArticleTitle_position_latitude}"/>
+                    <h:outputText value="#{bundle.ViewArticleLabel_position_name}"/>
+                    <h:outputText value="#{articleController.selected.position_name}" title="#{bundle.ViewArticleTitle_position_name}"/>
+                    <h:outputText value="#{bundle.ViewArticleLabel_status}"/>
+                    <h:outputText value="#{articleController.selected.status}" title="#{bundle.ViewArticleTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewArticleLabel_blogUser}"/>
+                    <h:outputText value="#{articleController.selected.blogUser}" title="#{bundle.ViewArticleTitle_blogUser}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{articleController.destroyAndView}" value="#{bundle.ViewArticleDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewArticleEditLink}"/>
+                <br />
+                <h:commandLink action="#{articleController.prepareCreate}" value="#{bundle.ViewArticleCreateLink}" />
+                <br />
+                <h:commandLink action="#{articleController.prepareList}" value="#{bundle.ViewArticleShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewArticleIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

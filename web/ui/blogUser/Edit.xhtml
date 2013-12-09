@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBlogUserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditBlogUserLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{blogUserController.selected.id}" title="#{bundle.EditBlogUserTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditBlogUserLabel_sessionUniqueUserID}" for="sessionUniqueUserID" />
+                    <h:inputText id="sessionUniqueUserID" value="#{blogUserController.selected.sessionUniqueUserID}" title="#{bundle.EditBlogUserTitle_sessionUniqueUserID}" />
+                    <h:outputLabel value="#{bundle.EditBlogUserLabel_firstname}" for="firstname" />
+                    <h:inputText id="firstname" value="#{blogUserController.selected.firstname}" title="#{bundle.EditBlogUserTitle_firstname}" />
+                    <h:outputLabel value="#{bundle.EditBlogUserLabel_lastname}" for="lastname" />
+                    <h:inputText id="lastname" value="#{blogUserController.selected.lastname}" title="#{bundle.EditBlogUserTitle_lastname}" />
+                    <h:outputLabel value="#{bundle.EditBlogUserLabel_about}" for="about" />
+                    <h:inputText id="about" value="#{blogUserController.selected.about}" title="#{bundle.EditBlogUserTitle_about}" />
+                    <h:outputLabel value="#{bundle.EditBlogUserLabel_photo}" for="photo" />
+                    <h:inputTextarea rows="4" cols="30" id="photo" value="#{blogUserController.selected.photo}" title="#{bundle.EditBlogUserTitle_photo}" />
+                    <h:outputLabel value="#{bundle.EditBlogUserLabel_username}" for="username" />
+                    <h:inputText id="username" value="#{blogUserController.selected.username}" title="#{bundle.EditBlogUserTitle_username}" required="true" requiredMessage="#{bundle.EditBlogUserRequiredMessage_username}"/>
+                    <h:outputLabel value="#{bundle.EditBlogUserLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{blogUserController.selected.password}" title="#{bundle.EditBlogUserTitle_password}" required="true" requiredMessage="#{bundle.EditBlogUserRequiredMessage_password}"/>
+                    <h:outputLabel value="#{bundle.EditBlogUserLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{blogUserController.selected.email}" title="#{bundle.EditBlogUserTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditBlogUserLabel_last_connected}" for="last_connected" />
+                    <h:inputText id="last_connected" value="#{blogUserController.selected.last_connected}" title="#{bundle.EditBlogUserTitle_last_connected}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditBlogUserLabel_userStatus}" for="userStatus" />
+                    <h:inputText id="userStatus" value="#{blogUserController.selected.userStatus}" title="#{bundle.EditBlogUserTitle_userStatus}" />
+                    <h:outputLabel value="#{bundle.EditBlogUserLabel_role}" for="role" />
+                    <h:selectOneMenu id="role" value="#{blogUserController.selected.role}" title="#{bundle.EditBlogUserTitle_role}" required="true" requiredMessage="#{bundle.EditBlogUserRequiredMessage_role}">
+                        <f:selectItems value="#{roleController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{blogUserController.update}" value="#{bundle.EditBlogUserSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditBlogUserViewLink}"/>
+                <br />
+                <h:commandLink action="#{blogUserController.prepareList}" value="#{bundle.EditBlogUserShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditBlogUserIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

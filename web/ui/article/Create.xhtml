@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateArticleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{articleController.selected.id}" title="#{bundle.CreateArticleTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_title}" for="title" />
+                    <h:inputText id="title" value="#{articleController.selected.title}" title="#{bundle.CreateArticleTitle_title}" />
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_keywords}" for="keywords" />
+                    <h:inputText id="keywords" value="#{articleController.selected.keywords}" title="#{bundle.CreateArticleTitle_keywords}" />
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_published_on}" for="published_on" />
+                    <h:inputText id="published_on" value="#{articleController.selected.published_on}" title="#{bundle.CreateArticleTitle_published_on}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_content}" for="content" />
+                    <h:inputTextarea rows="4" cols="30" id="content" value="#{articleController.selected.content}" title="#{bundle.CreateArticleTitle_content}" />
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_photo}" for="photo" />
+                    <h:inputTextarea rows="4" cols="30" id="photo" value="#{articleController.selected.photo}" title="#{bundle.CreateArticleTitle_photo}" />
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_position_longitude}" for="position_longitude" />
+                    <h:inputText id="position_longitude" value="#{articleController.selected.position_longitude}" title="#{bundle.CreateArticleTitle_position_longitude}" />
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_position_latitude}" for="position_latitude" />
+                    <h:inputText id="position_latitude" value="#{articleController.selected.position_latitude}" title="#{bundle.CreateArticleTitle_position_latitude}" />
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_position_name}" for="position_name" />
+                    <h:inputText id="position_name" value="#{articleController.selected.position_name}" title="#{bundle.CreateArticleTitle_position_name}" />
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{articleController.selected.status}" title="#{bundle.CreateArticleTitle_status}" />
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_blogUser}" for="blogUser" />
+                    <h:selectOneMenu id="blogUser" value="#{articleController.selected.blogUser}" title="#{bundle.CreateArticleTitle_blogUser}" >
+                        <f:selectItems value="#{blogUserController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{articleController.create}" value="#{bundle.CreateArticleSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{articleController.prepareList}" value="#{bundle.CreateArticleShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateArticleIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
